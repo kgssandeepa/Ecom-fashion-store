@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .sessionManagement(s->s.
                         sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(r->r.
-                        requestMatchers("/login","/Login").permitAll().anyRequest().authenticated()
+                        requestMatchers("/login","/Login", "product/*").permitAll().anyRequest().authenticated()
                 )
                 //   .authenticationProvider(authenticationProvider())
                 .httpBasic(Customizer.withDefaults())

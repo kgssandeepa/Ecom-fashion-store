@@ -1,6 +1,7 @@
 package com.ecommerce.fashion_store.model;
 
 
+import com.ecommerce.fashion_store.CategoryEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +16,7 @@ import lombok.*;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue()
     private long id;
 
     @Column(name = "name",nullable = false)
@@ -27,10 +28,11 @@ public class Product {
     @Column(name ="price",nullable = true)
     private double price;
 
-    @ManyToOne
-    @JoinColumn(
-            name = "category_id", // specifies the name of the foreign key column in the database
-            referencedColumnName = "id" // primary key of the user who owns this MESSAGE
-    )
-    private Category category;
+    @Column(name = "old_price")
+    private double oldPrice;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category")
+    private CategoryEnum category;
+
 }
