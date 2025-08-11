@@ -2,6 +2,7 @@ package com.ecommerce.fashion_store.service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.KeyGenerator;
@@ -50,4 +51,8 @@ public class JWTService {
             return "invalid token";
         }
     }
+
+//    public boolean isTokenValid(String token, UserDetails userDetails){
+//
+//    }
 }
