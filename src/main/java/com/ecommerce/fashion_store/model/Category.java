@@ -3,6 +3,8 @@ package com.ecommerce.fashion_store.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 
 @Entity
 @Table(name = "category")
@@ -12,7 +14,7 @@ import lombok.*;
 @Getter
 @Setter
 
-public class category {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,7 +26,6 @@ public class category {
     @Column(name="code",nullable = false)
     private String code;
 
-    @OneToOne(mappedBy = "category")
-    private Product product;
-
+    @OneToMany(mappedBy = "category")
+    private Set<Product> products;
 }

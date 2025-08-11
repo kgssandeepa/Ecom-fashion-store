@@ -27,7 +27,10 @@ public class Product {
     @Column(name ="price",nullable = true)
     private double price;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private category category;
+    @ManyToOne
+    @JoinColumn(
+            name = "category_id", // specifies the name of the foreign key column in the database
+            referencedColumnName = "id" // primary key of the user who owns this MESSAGE
+    )
+    private Category category;
 }
