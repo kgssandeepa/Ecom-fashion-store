@@ -1,6 +1,7 @@
 package com.ecommerce.fashion_store.controller;
 
 import com.ecommerce.fashion_store.CategoryEnum;
+import com.ecommerce.fashion_store.dto.AddToCardDTO;
 import com.ecommerce.fashion_store.dto.ProductCreateDTO;
 import com.ecommerce.fashion_store.dto.ProductResponseDTO;
 import com.ecommerce.fashion_store.service.ProductService;
@@ -34,5 +35,10 @@ public class ProductController {
     @GetMapping("/popularinwomen")
     public List<ProductResponseDTO> getPopularProduct() {
         return productService.findAllByCategory(CategoryEnum.WOMENS);
+    }
+
+    @PostMapping("/addtocart")
+    public void addtocart(@RequestBody AddToCardDTO addToCardDTO){
+        productService.addToCard(addToCardDTO);
     }
 }
