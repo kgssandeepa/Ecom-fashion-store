@@ -24,10 +24,10 @@ public class JWTService {
         }
     }
 
-    public String getJWTToken(){
+    public String getJWTToken(String username){
 
         return Jwts.builder()
-                .subject("username")
+                .subject(username)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis()+1000*60*15))
                 .signWith(secretKey)

@@ -1,5 +1,6 @@
 package com.ecommerce.fashion_store.service;
 
+import com.ecommerce.fashion_store.CategoryEnum;
 import com.ecommerce.fashion_store.dto.ProductCreateDTO;
 import com.ecommerce.fashion_store.dto.ProductResponseDTO;
 import com.ecommerce.fashion_store.model.Product;
@@ -51,5 +52,23 @@ public class ProductService {
 
     public void deleteProduct(long id){
         productRepository.deleteById(id);
+    }
+
+    public List<ProductResponseDTO> findAllByCategory(CategoryEnum category){
+
+        List<ProductResponseDTO> productResponseDTOS = new ArrayList<>();
+        for (Product product : productRepository.findAllByCategory(category)) {
+            ProductResponseDTO productResponseDTO = new ProductResponseDTO();
+            productResponseDTO.setId(product.getId());
+            productResponseDTO.setName(product.getName());
+            productResponseDTO.setDescription(product.getDescription());
+            productResponseDTO.setNewPrice(product.getPrice());
+            productResponseDTO.setOldPrice(product.getOldPrice());
+            productResponseDTO.setCategory(product.getCategory());
+            productResponseDTOS.add(productResponseDTO);
+
+
+        }
+        return productResponseDTOS;
     }
 }

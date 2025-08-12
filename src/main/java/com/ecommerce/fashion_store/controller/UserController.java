@@ -19,4 +19,9 @@ public class UserController {
     }
 
 
+    @PostMapping("/login")
+    public String login(@RequestBody UserDTO userDTO) {
+        return userService.login(userDTO);
+    }
+
 }

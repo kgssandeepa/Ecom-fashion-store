@@ -1,5 +1,6 @@
 package com.ecommerce.fashion_store.controller;
 
+import com.ecommerce.fashion_store.CategoryEnum;
 import com.ecommerce.fashion_store.dto.ProductCreateDTO;
 import com.ecommerce.fashion_store.dto.ProductResponseDTO;
 import com.ecommerce.fashion_store.service.ProductService;
@@ -28,5 +29,10 @@ public class ProductController {
     @DeleteMapping("remove-product/{id}")
     public void removeProduct(@PathVariable("id") long id){
         productService.deleteProduct(id);
+    }
+
+    @GetMapping("/popularinwomen")
+    public List<ProductResponseDTO> getPopularProduct() {
+        return productService.findAllByCategory(CategoryEnum.WOMENS);
     }
 }
