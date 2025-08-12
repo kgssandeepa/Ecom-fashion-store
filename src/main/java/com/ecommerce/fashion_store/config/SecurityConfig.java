@@ -28,8 +28,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(s->s.
                         sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(r->r.
-                        requestMatchers("/login","/Login", "product/*").permitAll().anyRequest().authenticated()
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll()// Allow all endpoints without authentication
                 )
                 //   .authenticationProvider(authenticationProvider())
                 .httpBasic(Customizer.withDefaults())

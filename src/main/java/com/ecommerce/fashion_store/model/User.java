@@ -29,6 +29,9 @@ public class User implements UserDetails {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
@@ -44,7 +47,5 @@ public class User implements UserDetails {
         return this.username;
     }
 
-    @OneToOne(mappedBy = "user")
-    private Customer customer;
 
 }

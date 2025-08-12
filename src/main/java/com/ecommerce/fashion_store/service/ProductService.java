@@ -35,6 +35,8 @@ public class ProductService {
 
         for (Product product : products) {
             ProductResponseDTO productResponseDTO = new ProductResponseDTO();
+
+            productResponseDTO.setId(product.getId());
             productResponseDTO.setName(product.getName());
             productResponseDTO.setDescription(product.getDescription());
             productResponseDTO.setNewPrice(product.getPrice());
@@ -45,5 +47,9 @@ public class ProductService {
         }
 
         return productResponseDTOS;
+    }
+
+    public void deleteProduct(long id){
+        productRepository.deleteById(id);
     }
 }

@@ -22,15 +22,8 @@ public class Orders {
 
     @ManyToOne
     @JoinColumn(
-            name = "customer_id",
-            referencedColumnName ="id"
-    )
-    private Customer customer;
-
-    @ManyToOne
-    @JoinColumn(
-            name = "order_items",
+            name = "user_id",
             referencedColumnName = "id"
     )
-    private User sender;
+    private User user;
 }

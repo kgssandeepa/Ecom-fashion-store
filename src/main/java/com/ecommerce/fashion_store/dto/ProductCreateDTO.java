@@ -16,4 +16,6 @@ public class ProductCreateDTO {
     private String description;
     private CategoryEnum category;
 
+
+
 }

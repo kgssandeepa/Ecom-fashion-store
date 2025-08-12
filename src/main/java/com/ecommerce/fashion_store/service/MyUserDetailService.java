@@ -18,6 +18,7 @@ public class MyUserDetailService implements UserDetailsService {
         UserDetails user = User.builder()
                 .username("sonal")
                 .password(passwordEncoder.encode("ssss"))
+
                 .build();
         return user;
     }

@@ -22,8 +22,11 @@ public class ProductController {
 
     @GetMapping("/find-all")
     public List<ProductResponseDTO> getProducts(){
-        System.out.println("============");
         return productService.findAll();
     }
 
+    @DeleteMapping("remove-product/{id}")
+    public void removeProduct(@PathVariable("id") long id){
+        productService.deleteProduct(id);
+    }
 }
