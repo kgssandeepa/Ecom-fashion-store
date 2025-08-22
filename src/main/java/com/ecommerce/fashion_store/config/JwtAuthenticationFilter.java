@@ -27,6 +27,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
+        String path = request.getRequestURI();
+
+        if (path.startsWith("/auth/")
+                || path.startsWith("/images/")
+                || path.startsWith("/files/")
+                || path.startsWith("/product/")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
@@ -40,12 +50,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
+            // else: invalid token → let Spring Security handle access denied
         }
 
+        // ✅ Always continue filter chain — don’t manually return 403
         filterChain.doFilter(request, response);
-    }
+        }
 
 }

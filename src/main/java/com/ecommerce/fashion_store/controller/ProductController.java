@@ -19,6 +19,7 @@ public class ProductController {
 
     @PostMapping("/create")
     public void createProduct(@RequestBody ProductCreateDTO productCreateDTO){
+        System.out.println("================= ssd");
         productService.createProduct(productCreateDTO);
     }
 
@@ -34,6 +35,7 @@ public class ProductController {
 
     @GetMapping("/popularinwomen")
     public List<ProductResponseDTO> getPopularProduct() {
+        System.out.println("ddddd");
         return productService.findAllByCategory(CategoryEnum.WOMENS);
     }
 
